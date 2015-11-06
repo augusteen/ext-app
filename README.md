@@ -30,3 +30,5 @@ There are 2 ways to create the tables.
 Or
 
 2) Import the ext_app.sql file located in /laravel
+
+License GPLv3 https://www.gnu.org/licenses/gpl.html
