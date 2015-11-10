@@ -863,8 +863,12 @@ $include-ext-window-messagebox: dynamic(true);;
 $include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
 $include-myapp-application: dynamic(true);;
-$include-myapp-store-personnel: dynamic(true);;
-$include-myapp-view-main-list: dynamic(true);;
+$include-myapp-global: dynamic(true);;
+$include-myapp-controller-routes: dynamic(true);;
+$include-myapp-view-auth-login: dynamic(true);;
+$include-myapp-view-auth-logincontroller: dynamic(true);;
+$include-myapp-view-auth-register: dynamic(true);;
+$include-myapp-view-auth-registercontroller: dynamic(true);;
 $include-myapp-view-main-main: dynamic(true);;
 $include-myapp-view-main-maincontroller: dynamic(true);;
 $include-myapp-view-main-mainmodel: dynamic(true);;
@@ -1105,6 +1109,14 @@ $relative-image-path-for-uis: $theme-crisp-resource-path;
 @import '../../../../../ext/classic/theme-crisp/sass/var/tab/Bar';
 @import '../../../../../ext/classic/theme-crisp/sass/var/window/Toast';
 
+/* including package myapp-theme */
+$myapp-theme-resource-root: '' !default;
+$myapp-theme-resource-path: 'images' !default;
+$current-package: 'myapp-theme';
+$current-resource-root: $myapp-theme-resource-root;
+$relative-image-path-for-uis: $myapp-theme-resource-path;
+@import '../../../../../packages/local/myapp-theme/sass/var/Component';
+
 /* including package MyApp */
 $MyApp-resource-root: '' !default;
 $MyApp-resource-path: 'images' !default;
@@ -1290,11 +1302,3 @@ $relative-image-path-for-uis: $theme-neptune-resource-path;
 @import '../../../../../ext/classic/theme-neptune/sass/src/grid/header/Container';
 @import '../../../../../ext/classic/theme-neptune/sass/src/grid/column/Column';
 @import '../../../../../ext/classic/theme-neptune/sass/src/resizer/Resizer';
-
-/* including package MyApp */
-$MyApp-resource-root: '' !default;
-$MyApp-resource-path: 'images' !default;
-$current-package: false;
-$current-resource-root: $MyApp-resource-root;
-$relative-image-path-for-uis: $MyApp-resource-path;
-@import '../../../../../sass/src/view/main/Main';
