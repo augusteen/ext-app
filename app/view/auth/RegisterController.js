@@ -1,13 +1,15 @@
 Ext.define('MyApp.view.auth.RegisterController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.register',
+
     requires: [
         'MyApp.Global'
     ],
+
     onSubmit:function(btn) {
         var me = this, // Controller reference
             win = btn.up('window'), // Window reference
-            form = me.lookupReference('login_form'); // Form reference
+            form = me.lookupReference('register_form'); // Form reference
         // Check if form is valid
         if (form.isValid()) {
             // Pop-up a message for registration progress

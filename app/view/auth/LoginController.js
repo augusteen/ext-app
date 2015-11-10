@@ -1,9 +1,6 @@
 Ext.define('MyApp.view.auth.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
-    requires: [
-        'MyApp.Global'
-    ],
     /*
     * Form submit method
     * */

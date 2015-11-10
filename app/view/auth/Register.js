@@ -8,8 +8,8 @@ Ext.define('MyApp.view.auth.Register', {
     ],
     controller: 'register',
     autoShow: true,
-    height: 250,
-    width: 350,
+    height: 275,
+    width: 375,
     modal:true,
     resizable:false,
     movable:false,
@@ -25,7 +25,10 @@ Ext.define('MyApp.view.auth.Register', {
         {
             xtype: 'form',
             bodyPadding: 10,
-            reference:'login_form',
+            reference:'register_form',
+            defaults:{
+                labelWidth:120
+            },
             items: [
                 {
                     xtype: 'textfield',
