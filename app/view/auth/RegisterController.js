@@ -1,11 +1,9 @@
 Ext.define('MyApp.view.auth.RegisterController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.register',
-
-    requires: [
-        'MyApp.Global'
-    ],
-
+    /*
+    * Submit method
+    * */
     onSubmit:function(btn) {
         var me = this, // Controller reference
             win = btn.up('window'), // Window reference

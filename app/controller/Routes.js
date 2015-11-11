@@ -2,8 +2,8 @@ Ext.define('MyApp.controller.Routes', {
     extend : 'Ext.app.Controller',
     requires: [
         'Ext.util.History',
-        'MyApp.Global',
         'MyApp.view.auth.Login',
+        'MyApp.view.auth.Password',
         'MyApp.view.auth.Register'
     ],
     /*
@@ -22,15 +22,23 @@ Ext.define('MyApp.controller.Routes', {
     routes : {
         // Register route
         'register' : {
+            before:'closeWindows',
             action : 'onRegister'
         },
         // Login route
         'login' : {
+            before:'closeWindows',
             action : 'onLogin'
         },
         // Logout route
         'logout' : {
+            before:'closeWindows',
             action : 'onLogout'
+        },
+        // Password route
+        'password' : {
+            before:'closeWindows',
+            action : 'onRecoverPassword'
         },
         // Home route
         'home' : {
@@ -72,6 +80,12 @@ Ext.define('MyApp.controller.Routes', {
         });
     },
     /*
+    * Recover password route
+    * */
+    onRecoverPassword:function() {
+        Ext.widget('auth_password');
+    },
+    /*
     * Home route method
     * */
     onHome:function() {
@@ -105,5 +119,20 @@ Ext.define('MyApp.controller.Routes', {
     * */
     startToken:function() {
         MyApp.Global.setStartToken(Ext.util.History.getToken());
+    },
+    /*
+    * Close windows method will close any open windows between routes
+    * */
+    closeWindows:function(){
+        var args = Ext.Array.slice(arguments), // Get a reference to the route action
+            action = args.pop(); // Get a reference to the route action
+        Ext.WindowMgr.each(
+            function(win) {
+                if (win.isVisible()) {
+                    win.close(true);
+                }
+            }
+        );
+        action.resume();
     }
 });

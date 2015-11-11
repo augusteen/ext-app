@@ -2,8 +2,10 @@ Ext.define('MyApp.view.auth.Register', {
     extend: 'Ext.window.Window',
     alias:'widget.auth_register',
     requires: [
+        'Ext.button.Button',
         'Ext.form.Panel',
         'Ext.form.field.Text',
+        'Ext.layout.container.Fit',
         'MyApp.view.auth.RegisterController'
     ],
     controller: 'register',
@@ -15,12 +17,8 @@ Ext.define('MyApp.view.auth.Register', {
     movable:false,
     closable:false,
     title: 'Register',
-    buttons:[
-        {
-            text:'Submit',
-            handler:'onSubmit'
-        }
-    ],
+    iconCls:'x-fa fa-user-plus', // Font-awesome icon for the menu item
+    layout:'fit',
     items:[
         {
             xtype: 'form',
@@ -44,7 +42,8 @@ Ext.define('MyApp.view.auth.Register', {
                     fieldLabel: 'Email',
                     name:'email',
                     allowBlank:false,
-                    margin:'0 0 20 0'
+                    margin:'0 0 20 0',
+                    vtype:'email' // Using the built in email vtype
                 },
                 {
                     xtype: 'textfield',
@@ -54,9 +53,34 @@ Ext.define('MyApp.view.auth.Register', {
                     name:'password',
                     allowBlank:false,
                     margin:'0 0 20 0',
-                    reference:'password_field'
+                    reference:'password_field',
+                    vtype:'passwordCheck', // Using the vtype from the global singleton.
+                    itemId:'firstPassword' // This itemId is used in the passwordMatch vtype in the global singleton
+                },
+                {
+                    xtype: 'textfield',
+                    anchor: '100%',
+                    fieldLabel: 'Password (re-enter)',
+                    inputType:'password',
+                    allowBlank:false,
+                    vtype:'passwordMatch', // Using the vtype from the global singleton
+                    validateFieldId:'firstPassword' // The itemId from the field you want to compare against
                 }
             ]
+        }
+    ],
+    dockedItems:[
+        {
+            xtype:'toolbar',
+            dock:'bottom',
+            items:[
+                {
+                    xtype:'button',
+                    text:'Submit',
+                    handler:'onSubmit'
+                }
+            ]
+
         }
     ]
 });

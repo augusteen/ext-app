@@ -2,8 +2,8 @@ Ext.define('MyApp.view.auth.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
     /*
-    * Form submit method
-    * */
+     * Form submit method
+     * */
     onSubmit:function(btn){
         var me = this, // Controller reference
             win = btn.up('window'), // Window reference
@@ -58,5 +58,18 @@ Ext.define('MyApp.view.auth.LoginController', {
                 }
             });
         }
+    },
+    /*
+    * onRegister method is called when the options - register menu item is selected.  Redirects to register route
+    * */
+    onRegister:function() {
+        this.redirectTo('register',false);
+    },
+    /*
+    * onRecoverPassword method is called when the options - recover password menu item is selected.  Redirects to
+    * password route
+    * */
+    onRecoverPassword:function() {
+        this.redirectTo('password',false);
     }
 });

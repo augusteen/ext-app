@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -135,6 +136,62 @@ class AuthController extends Controller
             return response([
                 'success' => true
             ], 200);
+        }
+    }
+    /*
+     * PasswordCode method will update the password_resets table with a code and send it back to the client
+     * */
+    public function passwordToken(Request $request) {
+        // Check that this user exists
+        $user = User::where('email',$request->input('email'))->count();
+        // If user exists
+        if ($user === 1) {
+            // Post data
+            $post_data = [
+                'email' => $request->input('email'),
+                'token' => bcrypt($request->input('email') . time() . mt_rand()),
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            // Insert a new pasword reset token
+            DB::table('password_resets')->insert($post_data);
+            // Retrieve the token
+            $token = DB::table('password_resets')->where('email',$request->input('email'))->orderBy('created_at','desc')->first(['token']);
+            // Respond with the token
+            return response([
+                'success' => true,
+                'token' => $token->token
+            ], 200);
+        } else {
+            // If user does not exist
+            return response([
+                'success' => false,
+                'user' => false,
+                'message' => 'User does not exist'
+            ], 400);
+        }
+    }
+    /*
+     * Password method resets the password
+     * */
+    public function password(Request $request) {
+        $token = DB::table('password_resets')->where('email',$request->input('email'))->orderBy('created_at','desc')->first(['token']);
+        if ($token->token == $request->input('password_token')) {
+            $user = User::where('email',$request->input('email'))->first();
+            $user->password = bcrypt($request->input('password'));
+            if ($user->save()) {
+
+                DB::table('password_resets')->where('email',$request->input('email'))->where('token',$token->token)->delete();
+
+                return response([
+                    'success' => true
+                ], 200);
+            }
+        } else {
+            return response([
+                'success' => false,
+                'token' => false,
+                'message' => 'Token does not match'
+            ], 400);
         }
     }
 }

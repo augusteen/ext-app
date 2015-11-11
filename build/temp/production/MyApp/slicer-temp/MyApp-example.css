@@ -11606,7 +11606,7 @@ the height of a multi-line element */
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:361 */
 .x-window-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
-    height: 22px;
+    height: 6px;
     padding-bottom: 6px;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:366 */
@@ -11621,7 +11621,7 @@ the height of a multi-line element */
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:378 */
 .x-window-header-title-default > .x-title-icon-wrap-default.x-title-icon-bottom {
-    height: 22px;
+    height: 6px;
     padding-top: 6px;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:383 */
@@ -11637,14 +11637,14 @@ the height of a multi-line element */
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:395 */
 .x-window-header-title-default > .x-title-icon-wrap-default > .x-title-icon-default {
     width: 16px;
-    height: 16px;
+    height: 0;
     background-position: center center;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:401 */
 .x-window-header-title-default > .x-title-icon-wrap-default > .x-title-glyph {
     color: #157fcc;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 0;
+    line-height: 0;
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:418 */
@@ -12598,17 +12598,17 @@ the height of a multi-line element */
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:542 */
 .x-window-header-default .x-window-header-icon {
     width: 16px;
-    height: 16px;
+    height: 0;
     color: #157fcc;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 0;
+    line-height: 0;
     background-position: center center;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:551 */
 .x-window-header-default .x-window-header-glyph {
     color: #157fcc;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 0;
+    line-height: 0;
     opacity: 0.5;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/window/Window.scss:568 */
